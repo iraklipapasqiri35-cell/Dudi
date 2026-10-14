@@ -1,130 +1,184 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>დუდი — საბავშვო ტანსაცმელი</title>
-<style>
-:root{--bg:#fffaf3;--ink:#3b2f2f;--muted:#7a6a62;--card:#fff;--line:#f0e3d2;--accent:#f26b5b;--accent2:#ffd37a;--mint:#bfe6d6;--sky:#bcdcf5;--pink:#f9c9d4;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#241e1d;--ink:#f6ece4;--muted:#c1b2a8;--card:#2f2726;--line:#463b38}}
-:root[data-theme="dark"]{--bg:#241e1d;--ink:#f6ece4;--muted:#c1b2a8;--card:#2f2726;--line:#463b38}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Georgian",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
-header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;z-index:5}
-.logo{font-size:28px;font-weight:800;color:var(--accent);letter-spacing:1px}
-.cartbtn{background:var(--accent);color:#fff;border:0;border-radius:999px;padding:10px 16px;font-size:15px;font-weight:700;cursor:pointer}
-.hero{padding:40px 20px;text-align:center;background:linear-gradient(135deg,var(--accent2),var(--pink));color:#3b2f2f}
-.hero h1{margin:0 0 8px;font-size:30px}
-.hero p{margin:0 auto 18px;max-width:420px}
-.hero a{display:inline-block;background:#3b2f2f;color:#fff;text-decoration:none;padding:12px 24px;border-radius:999px;font-weight:700}
-main{max-width:900px;margin:0 auto;padding:24px 16px}
-h2{margin:0 0 14px}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px}
-.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
-.tab.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-@media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.pic{height:130px;display:flex;align-items:center;justify-content:center;font-size:56px}
-.info{padding:10px 12px;display:flex;flex-direction:column;gap:6px;flex:1}
-.name{font-weight:700;font-size:15px}
-.price{color:var(--accent);font-weight:800}
-select{width:100%;padding:8px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
-.add{margin-top:auto;background:var(--ink);color:var(--bg);border:0;padding:10px;border-radius:10px;font-weight:700;cursor:pointer}
-.why{display:grid;gap:10px;margin-top:30px}
-.why div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
-footer{text-align:center;color:var(--muted);padding:24px 16px 32px;font-size:14px}
-#panel{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:10}
-#panel.open{display:block}
-.sheet{position:absolute;right:0;top:0;bottom:0;width:min(400px,100%);background:var(--bg);padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));overflow-y:auto}
-.row{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
-.row button{border:0;background:none;color:var(--accent);cursor:pointer;font-size:16px}
-input,textarea{width:100%;padding:10px;margin:6px 0;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
-.order{width:100%;background:var(--accent);color:#fff;border:0;padding:14px;border-radius:12px;font-weight:800;font-size:16px;cursor:pointer;margin-top:8px}
-.x{float:right;border:0;background:none;color:var(--ink);font-size:24px;cursor:pointer}
-.ok{background:var(--mint);color:#2b3b34;padding:14px;border-radius:12px;margin-top:10px;display:none}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUDI Store</title>
+    <style>
+        /* ლოგოს ფერების პალიტრა */
+        :root {
+            --primary-blue: #0b3cc1;
+            --primary-pink: #ff0080;
+            --light-bg: #f4f7fc;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+
+        /* ნავიგაციის ზოლი (Header) */
+        header {
+            background-color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ლოგოს სექცია მარცხნივ */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 55px; /* ლოგოს ზომა */
+            width: auto;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* მენიუს ბმულები */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-pink);
+        }
+
+        /* SHOP ღილაკი */
+        .shop-btn {
+            background: linear-gradient(135deg, var(--primary-pink), #e00070);
+            color: var(--white);
+            padding: 10px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(255, 0, 128, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .shop-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 0, 128, 0.5);
+        }
+
+        /* მთავარი სექცია */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 8%;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            max-width: 500px;
+        }
+
+        .hero-content h1 {
+            font-size: 42px;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* ღილაკი Add to Cart */
+        .add-cart-btn {
+            border: 2px solid var(--primary-pink);
+            color: var(--primary-pink);
+            background: transparent;
+            padding: 12px 30px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-cart-btn:hover {
+            background-color: var(--primary-pink);
+            color: var(--white);
+        }
+
+        /* ფუტერი (Footer) */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-<header><div class="logo">დუდი</div><button class="cartbtn" onclick="openCart()">🛒 კალათა (<span id="cnt">0</span>)</button></header>
 
-<section class="hero">
-<h1>რბილი და თბილი პატარებისთვის 🧸</h1>
-<p>საბავშვო ტანსაცმელი 0-დან 8 წლამდე. შეუკვეთე ონლაინ და მიიღე სახლში.</p>
-<a href="#shop">ნახე კოლექცია</a>
-</section>
+    <header>
+        <!-- მარცხენა მხარეს ლოგო -->
+        <a href="#" class="logo-container">
+            <!-- ჩასვი შენი ლოგოს ფაილის სახელი src-ში -->
+            <img src="logo.png" alt="DUDI Logo" class="logo-img">
+        </a>
 
-<main id="shop">
-<h2>კოლექცია</h2>
-<div class="tabs" id="tabs"></div>
-<div class="grid" id="grid"></div>
+        <!-- მენიუ -->
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">PRODUCTS</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
 
-<div class="why">
-<div>🚚 <b>მიწოდება მთელ საქართველოში</b><br>შეკვეთის დადასტურების შემდეგ გიკავშირდებით.</div>
-<div>💵 <b>გადახდა მიტანისას</b><br>ჯერ ნახე, მერე გადაიხადე.</div>
-<div>🔄 <b>ზომის გაცვლა</b><br>თუ ზომა არ მოერგო, დაგეხმარებით.</div>
-</div>
-</main>
+        <a href="#" class="shop-btn">SHOP</a>
+    </header>
 
-<footer>© დუდი · საბავშვო ტანსაცმელი</footer>
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Dudi Device</h1>
+            <p>Features small and various smart devices with top quality design and experience.</p>
+            <button class="add-cart-btn">Add to Cart</button>
+        </div>
+    </main>
 
-<div id="panel" onclick="if(event.target===this)closeCart()">
-<div class="sheet">
-<button class="x" onclick="closeCart()">×</button>
-<h2>თქვენი კალათა</h2>
-<div id="items"></div>
-<div class="row"><b>ჯამი</b><b id="total">0 ₾</b></div>
-<input id="nm" placeholder="სახელი და გვარი">
-<input id="ph" type="tel" placeholder="ტელეფონის ნომერი">
-<textarea id="ad" rows="2" placeholder="მისამართი (ქალაქი, ქუჩა)"></textarea>
-<button class="order" onclick="sendOrder()">შეკვეთის გაგზავნა</button>
-<div class="ok" id="ok"></div>
-</div>
-</div>
+    <footer>
+        <p>&copy; 2026 DUDI Store. All rights reserved.</p>
+    </footer>
 
-<script>
-// ტელეფონის ნომერი შეკვეთების მისაღებად (WhatsApp, საერთაშორისო ფორმატით, ცარის გარეშე). ჩაანაცვლეთ თქვენით:
-var SHOP_PHONE="995568889885";
-var P=[
-{n:"ბამბის ბოდი",c:"ახალშობილი",p:18,e:"👶",b:"#f9c9d4",s:["0-3თვ","3-6თვ","6-9თვ"]},
-{n:"რბილი კომბინეზონი",c:"ახალშობილი",p:32,e:"🧸",b:"#bcdcf5",s:["0-3თვ","3-6თვ","6-12თვ"]},
-{n:"ბავშვის პიჟამა",c:"გოგო",p:28,e:"🌙",b:"#ffd37a",s:["2წ","3წ","4წ","5წ"]},
-{n:"ყვავილოვანი კაბა",c:"გოგო",p:39,e:"👗",b:"#f9c9d4",s:["2წ","3წ","4წ","5წ","6წ"]},
-{n:"ჰუდი პატარა დათვით",c:"ბიჭი",p:45,e:"🐻",b:"#bfe6d6",s:["2წ","3წ","4წ","5წ","6წ"]},
-{n:"ბამბის შორტი და მაისური",c:"ბიჭი",p:35,e:"👕",b:"#bcdcf5",s:["2წ","3წ","4წ","5წ","6წ"]}
-];
-var cats=["ყველა","ახალშობილი","გოგო","ბიჭი"],cur="ყველა",cart=[];
-function render(){
- document.getElementById("tabs").innerHTML=cats.map(function(c){return '<button class="tab'+(c===cur?' on':'')+'" onclick="setCat(\''+c+'\')">'+c+'</button>'}).join("");
- document.getElementById("grid").innerHTML=P.map(function(x,i){
-  if(cur!=="ყველა"&&x.c!==cur)return"";
-  return '<div class="card"><div class="pic" style="background:'+x.b+'">'+x.e+'</div><div class="info"><div class="name">'+x.n+'</div><div class="price">'+x.p+' ₾</div><select id="s'+i+'">'+x.s.map(function(z){return'<option>'+z+'</option>'}).join("")+'</select><button class="add" onclick="add('+i+')">კალათაში</button></div></div>';
- }).join("");
-}
-function setCat(c){cur=c;render()}
-function add(i){cart.push({i:i,s:document.getElementById("s"+i).value});upd();var b=document.querySelector(".cartbtn");b.style.transform="scale(1.1)";setTimeout(function(){b.style.transform=""},200)}
-function rm(k){cart.splice(k,1);upd();drawCart()}
-function upd(){document.getElementById("cnt").textContent=cart.length}
-function drawCart(){
- var t=0;
- document.getElementById("items").innerHTML=cart.length?cart.map(function(c,k){var x=P[c.i];t+=x.p;return '<div class="row"><span>'+x.n+' ('+c.s+')</span><span>'+x.p+' ₾ <button onclick="rm('+k+')">✕</button></span></div>'}).join(""):'<p style="color:var(--muted)">კალათა ცარიელია</p>';
- document.getElementById("total").textContent=t+" ₾";
- return t;
-}
-function openCart(){drawCart();document.getElementById("ok").style.display="none";document.getElementById("panel").classList.add("open")}
-function closeCart(){document.getElementById("panel").classList.remove("open")}
-function sendOrder(){
- var nm=document.getElementById("nm").value.trim(),ph=document.getElementById("ph").value.trim(),ad=document.getElementById("ad").value.trim(),ok=document.getElementById("ok");
- if(!cart.length||!nm||!ph||!ad){ok.style.display="block";ok.textContent="გთხოვთ დაამატოთ ნივთი და შეავსოთ ყველა ველი.";return}
- var t=drawCart();
- var msg="ახალი შეკვეთა (დუდი)\n"+cart.map(function(c){return "- "+P[c.i].n+" ("+c.s+") "+P[c.i].p+" ₾"}).join("\n")+"\nჯამი: "+t+" ₾\nსახელი: "+nm+"\nტელ: "+ph+"\nმისამართი: "+ad;
- window.open("https://wa.me/"+SHOP_PHONE+"?text="+encodeURIComponent(msg),"_blank");
- ok.style.display="block";ok.textContent="მადლობა! შეკვეთა გაიგზავნა, მალე დაგიკავშირდებით.";
- cart=[];upd();
-}
-render();
+</body>
+</html>
 </script>
 </body>
 </html>
